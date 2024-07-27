@@ -1,0 +1,25 @@
+.Projects {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .project-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-item {
+    margin-bottom: 20px;
+  }
+  
+  .project-item h2 {
+    color: #007BFF;
+  }
+  
+  .project-item p {
+    line-height: 1.6;
+  }
+  
