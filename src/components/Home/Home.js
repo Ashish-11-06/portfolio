@@ -43,7 +43,7 @@ function Home() {
         </Container>
       </Container>
       <Home2 />
-      <About />
+     
     </section>
   );
 }
