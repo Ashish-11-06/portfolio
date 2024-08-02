@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
+import logo from "../Assets/logo.png";
 
 function NavBar({ onAboutClick, onScrollToTop  }) {
   const [expand, updateExpanded] = useState(false);
@@ -28,6 +29,9 @@ function NavBar({ onAboutClick, onScrollToTop  }) {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
+      <Navbar.Brand href="/" >
+      <img src={logo} className="logo" alt="Logo" />
+        </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => updateExpanded(expand ? false : "expanded")}
