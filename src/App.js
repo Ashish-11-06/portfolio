@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import Preloader from './components/Pre';
 import Navbar from './components/Navbar';
 import Home from './components/Home/Home';
@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [load, updateLoad] = useState(true);
-  const location = useLocation(); // Correct usage within Router context
+  const location = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,20 +32,24 @@ function App() {
     }
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="App" id={load ? "no-scroll" : "scroll"}>
-   <Analytics />
+      <Analytics />
       <Preloader load={load} />
-      <Navbar onAboutClick={handleScrollToAbout} />
+      <Navbar onAboutClick={handleScrollToAbout} onScrollToTop={handleScrollToTop} />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Projects />} />
         <Route path="/resume" element={<Resume />} />
-        <Route path="*" element={<Navigate to="/"/>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      {/* Conditionally render the About component */}
-      {location.pathname !== '/resume' && <About id='about-section' />}
+      {/* Conditionally render the About section */}
+      {location.pathname === '/' && <About id='about-section' />}
       <Footer />
     </div>
   );

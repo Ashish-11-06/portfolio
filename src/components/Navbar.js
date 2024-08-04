@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
 import logo from "../Assets/logo.png";
 
-function NavBar({ onAboutClick, onScrollToTop  }) {
+function NavBar({ onAboutClick, onScrollToTop }) {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  function scrollHandler() {
+  const scrollHandler = () => {
     if (window.scrollY >= 20) {
       updateNavbar(true);
     } else {
       updateNavbar(false);
     }
-  }
+  };
 
-  window.addEventListener("scroll", scrollHandler);
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
+
+  const handleAboutClick = () => {
+    if (location.pathname === '/resume') {
+      // Navigate to Home and then scroll to the About section
+      navigate('/');
+      setTimeout(() => {
+        onAboutClick();
+      }, 100); // Delay to ensure navigation completes
+    } else {
+      onAboutClick();
+    }
+    updateExpanded(false);
+  };
 
   return (
     <Navbar
@@ -29,8 +47,8 @@ function NavBar({ onAboutClick, onScrollToTop  }) {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-      <Navbar.Brand href="/" >
-      <img src={logo} className="logo" alt="Logo" />
+        <Navbar.Brand href="/">
+          <img src={logo} className="logo" alt="Logo" />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -39,8 +57,7 @@ function NavBar({ onAboutClick, onScrollToTop  }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => {onScrollToTop();
-                 updateExpanded(false);}}>
+              <Nav.Link as={Link} to="/" onClick={() => { onScrollToTop(); updateExpanded(false); }}>
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
@@ -48,11 +65,7 @@ function NavBar({ onAboutClick, onScrollToTop  }) {
             <Nav.Item>
               <Nav.Link
                 as="a"
-                href="#about-section"
-                onClick={() => {
-                  onAboutClick();
-                  updateExpanded(false);
-                }}
+                onClick={handleAboutClick}
                 style={{ cursor: 'pointer' }}
               >
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> About
