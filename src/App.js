@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react"
 import Preloader from './components/Pre';
 import Navbar from './components/Navbar';
 import Home from './components/Home/Home';
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="App" id={load ? "no-scroll" : "scroll"}>
+   <Analytics />
       <Preloader load={load} />
       <Navbar onAboutClick={handleScrollToAbout} />
       <ScrollToTop />
