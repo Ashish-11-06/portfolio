@@ -1,10 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import homeLogo from "../../Assets/home-main.png";
-import homeBack from "../../Assets/hero-back-illustration.svg";
 import Home2 from "./Home2";
 import Type from "./Type";
-import About from '../About/About'
 
 function Home() {
   return (
