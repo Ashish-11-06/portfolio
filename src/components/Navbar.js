@@ -31,10 +31,10 @@ function NavBar({ onAboutClick, onScrollToTop }) {
       // Navigate to Home and then scroll to the About section
       navigate('/');
       setTimeout(() => {
-        onAboutClick();
+        onAboutClick(); // Trigger the scroll to About section
       }, 100); // Delay to ensure navigation completes
     } else {
-      onAboutClick();
+      onAboutClick(); // Scroll to About section if already on Home page
     }
     updateExpanded(false);
   };
