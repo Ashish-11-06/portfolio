@@ -22,33 +22,33 @@ function Home2() {
               <br />
               <br />I am fluent in classics like
               <i>
-                <b className="purple"> JavaScript, Node.js, and Express. </b>
+                <strong className="purple"> JavaScript, Node.js, and Express. </strong>
               </i>
               <br />
               <br />
               My field of interest includes creating new &nbsp;
               <i>
-                <b className="purple">Web Technologies and Products. </b>
+                <strong className="purple">Web Technologies and Products. </strong>
               </i>
               <br />
               <br />
-              I also apply my passion for developing products using <b className="purple">Node.js</b> and
+              I also apply my passion for developing products using <strong className="purple">Node.js</strong> and
               <i>
-                <b className="purple">
+                <strong className="purple">
                   {" "}
                   modern JavaScript libraries and frameworks
-                </b>
+                </strong>
               </i>
               &nbsp; such as
               <i>
-                <b className="purple"> React.js</b>
+                <strong className="purple"> React.js</strong>
               </i>
               .
             </p>
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img src={myImg} className="img-fluid" alt="Ashish Bhosale's avatar" />
             </Tilt>
           </Col>
         </Row>
@@ -69,16 +69,6 @@ function Home2() {
                   <AiFillGithub />
                 </a>
               </li>
-              {/* <li className="social-icons">
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li> */}
               <li className="social-icons">
                 <a
                   href="https://www.linkedin.com/in/ashishbhosale2748/"
