@@ -84,7 +84,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - CSS
 
 ### Installation
-
-1. Clone the repository:
+Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/Ashish-11-06/portfolio.git
+```
+ 
+### Deployment
+The application is deployed on Vercel. You can view it at: https://ashportfolio-ashish-bhosales-projects.vercel.app/
+
+### Contributing
+Feel free to open issues or submit pull requests for any enhancements or fixes.
+
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
