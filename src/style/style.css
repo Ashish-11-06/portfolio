@@ -255,13 +255,17 @@ button:focus {
 }
 
 .home-section {
-  position: relative;
-  z-index: -1;
-  background-image: var(--image-gradient), url(../Assets/home-bg.jpg);
-  background-position: top center;
-  background-repeat: no-repeat;
-  padding-bottom: 30px !important;
-  padding-top: 30px !important;
+  position: relative; /* Keep the section positioned relative for layering */
+  z-index: 0; /* Set z-index to 0 to prevent it from going behind other content */
+  background-image: var(--image-gradient), url(../Assets/home-bg.jpg); /* Use gradient and image */
+  background-position: top center; /* Position the background at the top center */
+  background-repeat: no-repeat; /* Ensure no repetition of the background image */
+  background-size: cover; /* Cover the entire section area */
+  padding-bottom: 30px !important; /* Add padding to the bottom */
+  padding-top: 30px !important; /* Add padding to the top */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  max-width: 100vw; /* Constrain the section to the viewport width */
+  margin: 0; /* Remove default margin */
 }
 
 .home-content {
