@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/avatar.png";
 import Tilt from "react-parallax-tilt";
@@ -7,15 +7,7 @@ import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Home2() {
-  const [loaderComplete, setLoaderComplete] = useState(false);
-
-  // Simulate preloader with timeout
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoaderComplete(true);
-    }, 900); // Adjust the timeout to match your preloader duration
-    return () => clearTimeout(timer);
-  }, []);
+  const [loaderComplete] = useState(true);
 
   // Refs to track the components in view
   const aboutRef = useRef(null);
@@ -23,9 +15,9 @@ function Home2() {
   const socialRef = useRef(null);
 
   // Hooks to check if elements are in view
-  const isAboutInView = useInView(aboutRef, { once: true, margin: "-100px" });
-  const isAvatarInView = useInView(avatarRef, { once: true, margin: "-100px" });
-  const isSocialInView = useInView(socialRef, { once: true, margin: "-100px" });
+  const isAboutInView = useInView(aboutRef, { once: false, threshold: 0.5 });
+  const isAvatarInView = useInView(avatarRef, { once: false, threshold: 0.5 });
+  const isSocialInView = useInView(socialRef, { once: false, threshold: 0.5 });
 
   // Define animation variants
   const fadeInUp = {
@@ -52,7 +44,7 @@ function Home2() {
               ref={aboutRef}
               style={{ fontSize: "2.6em" }}
               initial="hidden"
-              animate={loaderComplete && (isAboutInView ? "visible" : "hidden")}
+              animate={loaderComplete && isAboutInView ? "visible" : "hidden"}
               variants={fadeInUp}
               transition={{ duration: 1, ease: "easeInOut" }}
             >
@@ -61,7 +53,7 @@ function Home2() {
             <motion.p
               className="home-about-body"
               initial="hidden"
-              animate={loaderComplete && (isAboutInView ? "visible" : "hidden")}
+              animate={loaderComplete && isAboutInView ? "visible" : "hidden"}
               variants={fadeInUp}
               transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
             >
@@ -109,7 +101,7 @@ function Home2() {
                 className="img-fluid"
                 alt="Ashish Bhosale's avatar"
                 initial="hidden"
-                animate={loaderComplete && (isAvatarInView ? "visible" : "hidden")}
+                animate={loaderComplete && isAvatarInView ? "visible" : "hidden"}
                 variants={rotateIn}
                 transition={{ duration: 1, ease: "easeInOut", delay: 0.4 }}
               />
@@ -121,7 +113,7 @@ function Home2() {
             <motion.h1
               ref={socialRef}
               initial="hidden"
-              animate={loaderComplete && (isSocialInView ? "visible" : "hidden")}
+              animate={loaderComplete && isSocialInView ? "visible" : "hidden"}
               variants={fadeInUp}
               transition={{ duration: 1, ease: "easeInOut", delay: 0.6 }}
             >
@@ -129,7 +121,7 @@ function Home2() {
             </motion.h1>
             <motion.p
               initial="hidden"
-              animate={loaderComplete && (isSocialInView ? "visible" : "hidden")}
+              animate={loaderComplete && isSocialInView ? "visible" : "hidden"}
               variants={fadeInUp}
               transition={{ duration: 1, ease: "easeInOut", delay: 0.8 }}
             >
@@ -138,7 +130,7 @@ function Home2() {
             <motion.ul
               className="home-about-social-links"
               initial="hidden"
-              animate={loaderComplete && (isSocialInView ? "visible" : "hidden")}
+              animate={loaderComplete && isSocialInView ? "visible" : "hidden"}
               variants={bounceIn}
               transition={{ duration: 0.5, ease: "easeInOut", delay: 1 }}
             >
@@ -181,4 +173,3 @@ function Home2() {
 }
 
 export default Home2;
-                             
